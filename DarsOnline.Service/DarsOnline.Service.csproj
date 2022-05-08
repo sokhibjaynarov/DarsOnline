@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DarsOnline.Data\DarsOnline.Data.csproj" />
+    <ProjectReference Include="..\DarsOnline.Domain\DarsOnline.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
