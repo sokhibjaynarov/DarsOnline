@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace DarsOnline.Api
 {
@@ -21,6 +22,11 @@ namespace DarsOnline.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+            .UseSerilog((hostingContext, loggingConfiguration) =>
+            {
+                loggingConfiguration.ReadFrom.Configuration(hostingContext.Configuration);
+            }
+            );
     }
 }
