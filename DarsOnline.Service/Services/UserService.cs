@@ -1,12 +1,11 @@
-﻿using DarsOnline.Data.IRepositories;
+﻿using AutoMapper;
+using DarsOnline.Data.IRepositories;
 using DarsOnline.Domain.Entities;
+using DarsOnline.Service.DTOs;
 using DarsOnline.Service.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DarsOnline.Service.Services
 {
@@ -14,13 +13,17 @@ namespace DarsOnline.Service.Services
     public class UserService : IUserService
     {
         private IGenericRepository<User> userRepository;
-        public UserService(IGenericRepository<User> userRepository)
+        private IMapper mapper;
+        public UserService(IGenericRepository<User> userRepository, IMapper mapper)
         {
             this.userRepository = userRepository;
+            this.mapper = mapper;
         }
-        public User Create(User user)
+        public User Create(UserForCreationDto userDto)
         {
-            return userRepository.Create(user);
+            var mappedUser = mapper.Map<User>(userDto);
+
+            return userRepository.Create(mappedUser);
         }
 
         public bool Delete(Expression<Func<User, bool>> predicate)

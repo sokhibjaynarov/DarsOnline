@@ -1,4 +1,5 @@
 ﻿using DarsOnline.Domain.Entities;
+using DarsOnline.Service.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace DarsOnline.Service.Interfaces
 {
     public interface IUserService
     {
-        User Create(User user);
+        User Create(UserForCreationDto user);
         User Get(Expression<Func<User, bool>> predicate);
 
         IQueryable<User> GetAll(Expression<Func<User, bool>> predicate = null);

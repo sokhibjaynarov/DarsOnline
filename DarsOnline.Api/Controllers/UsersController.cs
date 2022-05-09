@@ -1,4 +1,5 @@
 ﻿using DarsOnline.Domain.Entities;
+using DarsOnline.Service.DTOs;
 using DarsOnline.Service.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,9 @@ namespace DarsOnline.Api.Controllers
         }
 
         [HttpPost]
-        public User Create(User user)
+        public User Create(UserForCreationDto userDto)
         {
-            return userService.Create(user);
+            return userService.Create(userDto);
         }
 
         [HttpGet]

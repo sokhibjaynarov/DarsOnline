@@ -3,6 +3,7 @@ using DarsOnline.Data.IRepositories;
 using DarsOnline.Data.Repositories;
 using DarsOnline.Domain.Entities;
 using DarsOnline.Service.Interfaces;
+using DarsOnline.Service.Mapper;
 using DarsOnline.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +44,8 @@ namespace DarsOnline.Api
 
             services.AddScoped<IGenericRepository<User>, GenericRepository<User>>();
             services.AddScoped<IUserService, UserService>();
+
+            services.AddAutoMapper(typeof(MappingProfile));
 
             services.AddSwaggerGen(c =>
             {
